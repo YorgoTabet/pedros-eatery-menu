@@ -1,34 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Container } from 'react-bootstrap'
 import './App.css'
+import { primaryColor } from './Constants/Colors'
+import Navbar from './Components/Navbar/Navbar'
+import Section from './Components/Section/Section'
+import { SubSections } from './Types/Types'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const subsections: SubSections = {
+    "SANDWICHES": {
+      "Hamburger": {
+        name: "Hamburger",
+        price: "$4.5",
+        description: "120 grs beef, tomato ,  onions ,coleslaw , pickles , sauce"
+      },
+      "Crispy Chicken Burger": {
+        name: "Crispy Chicken Burger",
+        price: "$5",
+        description: "150 grs chicken breast, lettuce, tomato , pickles, honey mustard sauce"
+      },
+      "Tawook": {
+        name: "Tawook",
+        price: "$4.5",
+        description: "Coleslaw, french fries, special garlic, dip, pickles"
+      }
+    }
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Container style={{background: primaryColor, height: "50ch"}}>
+      <Navbar />
+      <Section sectionName='Sandwiches Menu' subsections={subsections} />
+    </Container>
   )
 }
 
